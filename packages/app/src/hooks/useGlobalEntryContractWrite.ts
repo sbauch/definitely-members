@@ -29,7 +29,6 @@ export function useGlobalEntryContractWrite<
     isError: false,
     isIdle: true,
     isLoading: false,
-    isSuccess: null,
   };
 
   const write = React.useCallback(() => {
@@ -56,7 +55,6 @@ export function useGlobalEntryContractWrite<
     ];
 
     setLoading(true);
-    console.warn(implementationContract);
     return implementationContract[functionName as string]
       .apply(null, flatArgs)
       .then((resp: TransactionResponse) => {

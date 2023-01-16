@@ -7,13 +7,14 @@ import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import { alchemyProvider } from "wagmi/providers/alchemy";
 import { publicProvider } from "wagmi/providers/public";
+import { canto } from "~utils/canto";
 import { targetChainId } from "../utils/contracts";
 
 const appName = "DEF DAO";
 const alchemyId = process.env.NEXT_PUBLIC_ALCHEMY_API_KEY;
 
 const { chains, provider, webSocketProvider } = configureChains(
-  [mainnet, goerli].filter((c) => c.id === targetChainId),
+  [...[mainnet, goerli].filter((c) => c.id === targetChainId), canto],
   [
     ...(alchemyId ? [alchemyProvider({ apiKey: alchemyId })] : []),
     publicProvider(),

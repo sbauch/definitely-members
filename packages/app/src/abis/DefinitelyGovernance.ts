@@ -1,4 +1,4 @@
-const address = "0x46AfBb3808894dc2b966a17a3E67Fe195ADBabc0";
+const address = "0xc231c1F12fd42D0aB66eDb28e6b040A923b75f1b";
 const abi = [
   {
     inputs: [
@@ -697,12 +697,38 @@ const abi = [
   },
   {
     inputs: [],
+    name: "listProposalIds",
+    outputs: [
+      {
+        internalType: "uint256[]",
+        name: "",
+        type: "uint256[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
     name: "name",
     outputs: [
       {
         internalType: "string",
         name: "",
         type: "string",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "numProposals",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
     stateMutability: "view",
@@ -856,6 +882,25 @@ const abi = [
     inputs: [
       {
         internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "proposalIds",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
         name: "proposalId",
         type: "uint256",
       },
@@ -943,6 +988,11 @@ const abi = [
         internalType: "bool",
         name: "executed",
         type: "bool",
+      },
+      {
+        internalType: "string",
+        name: "description",
+        type: "string",
       },
     ],
     stateMutability: "view",
@@ -1038,7 +1088,7 @@ const abi = [
     inputs: [
       {
         internalType: "uint256",
-        name: "blockNumber",
+        name: "",
         type: "uint256",
       },
     ],
@@ -1050,7 +1100,7 @@ const abi = [
         type: "uint256",
       },
     ],
-    stateMutability: "view",
+    stateMutability: "pure",
     type: "function",
   },
   {

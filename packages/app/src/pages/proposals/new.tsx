@@ -10,7 +10,6 @@ import { Layout } from "~/components/Layout";
 import { MembersCard } from "~/components/MembersCard";
 import { useIsDefMember } from "~/hooks/useIsDefMember";
 import { useIsMounted } from "~/hooks/useIsMounted";
-import { ListProposalsCard } from "~components/ListProposalsCard";
 
 const Page = styled.div`
   display: grid;
@@ -33,7 +32,7 @@ export default function HomePage() {
           <Card title="Checking membership status" isLoading />
         )}
 
-        {isMounted && address && <ListProposalsCard />}
+        {isMounted && address && <CreateProposalCard />}
       </Page>
     </Layout>
   );

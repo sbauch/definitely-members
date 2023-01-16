@@ -1,4 +1,8 @@
 import { EssentialSigner } from "@0xessential/signers";
+import {
+  TransactionReceipt,
+  TransactionResponse,
+} from "@ethersproject/providers";
 import { PrepareWriteContractResult } from "@wagmi/core";
 import { Abi } from "abitype";
 import { Signer } from "ethers";
@@ -21,6 +25,7 @@ export function useGlobalEntryPrepareContractWrite<
   onSuccess,
 }: UsePrepareContractWriteConfig<TAbi, TFunctionName> & {
   onSubmit?: () => void;
+  onSuccess?: (result: TransactionReceipt) => void;
 }) {
   const { address: signerAddress } = useAccount();
   const { data: signer } = useSigner();
@@ -35,7 +40,7 @@ export function useGlobalEntryPrepareContractWrite<
       rpcUrl: "https://canto.slingshot.finance/",
       onSubmit,
     });
-  }, [signer, signerAddress]);
+  }, [signer, signerAddress, onSubmit]);
 
   return {
     config: {
@@ -52,6 +57,7 @@ export function useGlobalEntryPrepareContractWrite<
       onSuccess,
     } as unknown as PrepareWriteContractResult<TAbi, TFunctionName> & {
       signer: Signer;
+      onSuccess?: (result: TransactionReceipt) => void;
     },
   };
 }

@@ -4,6 +4,8 @@ export const globalStyle = css`
   :root {
     --foreground: rgb(0, 0, 0);
     --foreground-alpha: 0, 0, 0;
+    --green: rgb(117, 250, 76);
+    --red: rgb(227, 50, 36);
     --background: rgb(255, 255, 255);
     --background-alpha: 255, 255, 255;
     --background-emphasis: rgba(0, 0, 0, 0.04);
