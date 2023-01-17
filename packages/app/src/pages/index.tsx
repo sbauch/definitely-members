@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { useAccount } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 import { Card } from "../components/Card";
 import { ClaimInviteCard } from "../components/ClaimInviteCard";
 import { ConnectWalletCard } from "../components/ConnectWalletCard";
@@ -23,6 +24,8 @@ export default function HomePage() {
   const { isDefMember, isLoading } = useIsDefMember({
     address,
   });
+
+  const { vaultAddress} = useDelegatedAccount();
 
   return (
     <Layout>

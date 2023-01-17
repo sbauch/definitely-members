@@ -45,6 +45,7 @@ importers:
       '@wagmi/core': ^0.8.14
       abitype: ^0.2.5
       connectkit: ^1.1.1
+      delegatecash: ^0.3.0
       ethers: 5.7.2
       graphql: ^16.6.0
       graphql-request: ^5.1.0
@@ -67,6 +68,7 @@ importers:
       '@wagmi/core': 0.8.14_2zmba3zh2lo2ye5dzgeckiacfa
       abitype: 0.2.5_typescript@4.9.4
       connectkit: 1.1.1_opxkh35q2zbqahgybdihnqav2q
+      delegatecash: 0.3.0
       ethers: 5.7.2
       graphql: 16.6.0
       graphql-request: 5.1.0_graphql@16.6.0
@@ -4819,6 +4821,15 @@ packages:
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+
+  /delegatecash/0.3.0:
+    resolution: {integrity: sha512-8T4VFwTKq6KlvCTWSmthgIqzTXr3XFfey70bQ3h8AiqA9zBMu8SFtEDXaHAPAfT3uPTTslyxVMXJMAVu8A/htA==}
+    dependencies:
+      ethers: 5.7.2
+    transitivePeerDependencies:
+      - bufferutil
+      - utf-8-validate
+    dev: false
 
   /delimit-stream/0.1.0:
     resolution: {integrity: sha512-a02fiQ7poS5CnjiJBAsjGLPp5EwVoGHNeu9sziBd9huppRfsAFIpv5zNLv0V1gbop53ilngAf5Kf331AwcoRBQ==}
