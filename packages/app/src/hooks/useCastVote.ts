@@ -31,7 +31,10 @@ export function useCastVote({
   vote,
 }: Options) {
   const { address } = useAccount();
-  const { data: hasVoted } = useHasVoted(proposalId, address as `0x${string}`);
+  const { data: hasVoted, refetch } = useHasVoted(
+    proposalId,
+    address as `0x${string}`
+  );
   const { data: membership } = useMemberQuery(address || "0x");
 
   const { config } = useGlobalEntryPrepareContractWrite({
@@ -64,6 +67,7 @@ export function useCastVote({
     enabled: !!castVote?.data?.hash,
     chainId: 7700,
     onSuccess: (data) => {
+      refetch();
       onTxSuccess?.(data);
     },
     onError: (error) => {
