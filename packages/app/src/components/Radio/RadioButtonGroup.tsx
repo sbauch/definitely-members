@@ -24,7 +24,6 @@ const RadioButtonGroup = ({ options, onChange, value, disabled }: IInputGroup) =
       return (
         <RadioButton
           label={label}
-          disabled={disabled}
           key={optionId}
           id={optionId}
           disabled={disabled}
