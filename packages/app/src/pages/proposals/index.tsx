@@ -28,7 +28,7 @@ export default function HomePage() {
   return (
     <Layout>
       <Page>
-        {isMounted && !address && <ConnectWalletCard />}
+        {isMounted && !address && <ConnectWalletCard text="Members can create and vote on proposals" />}
         {isMounted && address && isLoading && (
           <Card title="Checking membership status" isLoading />
         )}
