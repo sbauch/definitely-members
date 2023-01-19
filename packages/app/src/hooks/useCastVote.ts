@@ -31,10 +31,12 @@ export function useCastVote({
   vote,
 }: Options) {
   const { address } = useAccount();
-  const { data: hasVoted, refetch } = useHasVoted(
-    proposalId,
-    address as `0x${string}`
-  );
+  const {
+    data: hasVoted,
+    refetch,
+    receipt,
+  } = useHasVoted(proposalId, address as `0x${string}`);
+
   const { data: membership } = useMemberQuery(address || "0x");
 
   const { config } = useGlobalEntryPrepareContractWrite({
@@ -81,5 +83,6 @@ export function useCastVote({
     hasVoted,
     castVote,
     castVoteTx,
+    receipt,
   };
 }

@@ -77,11 +77,11 @@ const RadioButton = ({
   return (
     <Wrapper className={label}>
       {label === value ? (
-        <Button className="active" type="button">
+        <Button disabled={disabled} className="active" type="button">
           <span>{label}</span>
         </Button>
       ) : (
-        <InactiveButton className="inactive" id={id} type="button" onClick={() => onChange(label)}>
+        <InactiveButton disabled={disabled} className="inactive" id={id} type="button" onClick={() => onChange(label)}>
           <span>{label}</span>
         </InactiveButton>
       )}

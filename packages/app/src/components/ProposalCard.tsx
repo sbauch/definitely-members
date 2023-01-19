@@ -7,7 +7,7 @@ import { Button } from "~components/Button";
 import { ButtonConnect } from "~components/ButtonConnect";
 import { Card } from "~components/Card";
 import { Mono } from "~components/Typography";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { VoteType, useCastVote } from "~hooks/useCastVote";
 import RadioButtonGroup from "./Radio/RadioButtonGroup";
@@ -63,11 +63,17 @@ export function ProposalCard() {
   const { data: proposal, isLoading, refetch } = useProposal(proposalId);
   const { displayName: proposer } = useENS(proposal?.proposer);
   
-  const { castVote, castVoteTx, hasVoted } = useCastVote({
+  const { castVote, castVoteTx, hasVoted, receipt } = useCastVote({
     proposalId: proposalId || "0",
     vote,
     onTxSuccess: () => refetch,
   });
+
+  useEffect(() => {
+    if (!receipt?.votes) return;
+
+    setVote(receipt.votes.toNumber())
+  }, [receipt?.votes])
 
   return (
     <Card
@@ -100,9 +106,10 @@ export function ProposalCard() {
               { name: "vote", label: "Abstain" },
             ]}
             value={VoteType[vote]}
-            onChange={(label) =>
+            onChange={(label) =>{
+              if (hasVoted) return;
               setVote(VoteType[label as keyof typeof VoteType])
-            }
+            }}
           />
 
           <>

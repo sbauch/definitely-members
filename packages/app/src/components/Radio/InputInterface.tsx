@@ -12,6 +12,7 @@ export interface IInputGroup {
   hasFullWidth?: boolean;
   onChange: (value: string) => void;
   value: string;
+  disabled?: boolean;
 }
 
 export interface InputElementProps {
