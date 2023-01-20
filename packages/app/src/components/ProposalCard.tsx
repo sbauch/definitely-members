@@ -31,6 +31,7 @@ const VotesContainer = styled.div`
   font-weight: 200;
   font-size: 0.8em;
   grid-gap: 0.5rem;
+  justify-content: end;
 
   #for {
     color: var(--green);
@@ -70,10 +71,10 @@ export function ProposalCard() {
   });
 
   useEffect(() => {
-    if (!receipt?.votes) return;
+    if (!receipt?.hasVoted) return;
 
-    setVote(receipt.votes.toNumber())
-  }, [receipt?.votes])
+    setVote(receipt.support)
+  }, [receipt])
 
   return (
     <Card

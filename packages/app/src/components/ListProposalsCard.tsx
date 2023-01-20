@@ -54,7 +54,7 @@ export function ListProposalsCard() {
         <List>
           <ListItem>
             <DescriptionArea uppercase subdued>
-              Proposal
+              Ask
             </DescriptionArea>
             <VotesArea uppercase subdued>
               Votes

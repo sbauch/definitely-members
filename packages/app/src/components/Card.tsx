@@ -14,10 +14,10 @@ const StyledCard = styled.article<{ isLoading: boolean }>`
   }
 
   .subhead {
-    display: flex;
-    flex-direct: row;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 240px;
     align-items: baseline;
+    justify-content: space-between;
   }
 
   ${(p) =>
@@ -47,7 +47,7 @@ export function Card({ children, title, isLoading = false, addendum }: Props) {
       {!isLoading && (
         <Subheading margin="0 0 0.25">
           <div className="subhead">
-            {title}
+            <div>{title}</div>
             {addendum}
           </div>
         </Subheading>
