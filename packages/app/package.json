@@ -28,6 +28,7 @@
     "@wagmi/core": "^0.8.14",
     "abitype": "^0.2.5",
     "connectkit": "^1.1.1",
+    "delegatecash": "^0.3.0",
     "ethers": "5.7.2",
     "graphql": "^16.6.0",
     "graphql-request": "^5.1.0",
