@@ -1,11 +1,11 @@
 import { TransactionReceipt } from "@ethersproject/providers";
 import {
-  useDelegatedAccount,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
 } from "wagmi";
 import { CLAIMABLE_CONTRACT } from "../utils/contracts";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 import { useMerkleProof } from "./useMerkleProof";
 
 type Options = {
