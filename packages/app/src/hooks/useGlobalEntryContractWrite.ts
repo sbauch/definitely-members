@@ -3,7 +3,8 @@ import { TransactionResponse } from "@ethersproject/providers";
 import { Abi } from "abitype";
 import { constants, Contract, Signer, utils } from "ethers";
 import * as React from "react";
-import { useAccount, UseContractWriteConfig } from "wagmi";
+import { UseContractWriteConfig } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 
 export function useGlobalEntryContractWrite<
   TAbi extends Abi | readonly unknown[],
@@ -21,7 +22,7 @@ export function useGlobalEntryContractWrite<
   signer: Signer;
 }) {
   const [data, setData] = React.useState<TransactionResponse>();
-  const { address: authorizer } = useAccount();
+  const { vaultAddress: authorizer } = useDelegatedAccount();
   const [isLoading, setLoading] = React.useState(false);
 
   const defaultValues = {
@@ -45,7 +46,7 @@ export function useGlobalEntryContractWrite<
         : [
             {
               customData: {
-                authorizer,
+                authorizer: address || authorizer,
                 nftContract: constants.AddressZero,
                 nftTokenId: 0,
                 nftChainId: 0,

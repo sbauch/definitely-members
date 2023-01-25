@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useAccount } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 import { Card } from "~/components/Card";
 import { ConnectWalletCard } from "~/components/ConnectWalletCard";
 import { Layout } from "~/components/Layout";
@@ -15,7 +15,7 @@ const Page = styled.div`
 
 export default function HomePage() {
   const isMounted = useIsMounted();
-  const { address } = useAccount();
+  const { address } = useDelegatedAccount();
   const { isDefMember, isLoading } = useIsDefMember({
     address,
   });

@@ -1,6 +1,6 @@
 import { TransactionReceipt } from "@ethersproject/providers";
+import { useDelegatedAccount } from "./useDelegatedAccount";
 import {
-  useAccount,
   useContractRead,
   useContractWrite,
   usePrepareContractWrite,
@@ -22,7 +22,7 @@ export function useSendInvite({
   onTxSuccess,
   onTxError,
 }: Options) {
-  const { address } = useAccount();
+  const { address } = useDelegatedAccount();
 
   const { data: hasInviteAvailable } = useContractRead({
     ...INVITES_CONTRACT,

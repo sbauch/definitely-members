@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useAccount } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 import { useBlockExplorer } from "~hooks/useEtherscan";
 import { useIsDefMember } from "~hooks/useIsDefMember";
 import { useIsMounted } from "~hooks/useIsMounted";

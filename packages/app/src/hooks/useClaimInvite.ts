@@ -1,6 +1,7 @@
 import { TransactionReceipt } from "@ethersproject/providers";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
+
 import {
-  useAccount,
   useContractRead,
   useContractWrite,
   usePrepareContractWrite,
@@ -19,7 +20,7 @@ export function useClaimInvite({
   onTxSuccess,
   onTxError,
 }: Options) {
-  const { address } = useAccount();
+  const { address } = useDelegatedAccount();
 
   const { data: hasInviteAvailable } = useContractRead({
     ...INVITES_CONTRACT,

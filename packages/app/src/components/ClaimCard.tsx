@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
-import { useAccount } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 import { useClaimMembership } from "../hooks/useClaimMembership";
 import { useEtherscan } from "../hooks/useEtherscan";
 import { useIsDefMember } from "../hooks/useIsDefMember";
@@ -27,7 +27,7 @@ export function ClaimCard() {
   const isMounted = useIsMounted();
   const { getTransactionUrl } = useEtherscan();
 
-  const { address } = useAccount();
+  const { address } = useDelegatedAccount();
 
   const { isDefMember, refetch: refetchMemberStatus } = useIsDefMember({
     address,

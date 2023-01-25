@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useAccount } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 import { useBlockExplorer } from "~hooks/useEtherscan";
 import { useIsDefMember } from "~hooks/useIsDefMember";
 import { useIsMounted } from "~hooks/useIsMounted";
@@ -53,13 +53,11 @@ export function ProposalCard() {
 
   const [vote, setVote] = useState<VoteType>(VoteType.Abstain);
 
-  const { address } = useAccount();
+  const { address, vaultAddress } = useDelegatedAccount();
 
   const { isDefMember } = useIsDefMember({
     address,
   });
-
-
 
   const { data: proposal, isLoading, refetch } = useProposal(proposalId);
   const { displayName: proposer } = useENS(proposal?.proposer);

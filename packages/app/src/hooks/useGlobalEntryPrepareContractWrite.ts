@@ -7,7 +7,9 @@ import { PrepareWriteContractResult } from "@wagmi/core";
 import { Abi } from "abitype";
 import { Signer } from "ethers";
 import * as React from "react";
-import { useAccount, UsePrepareContractWriteConfig, useSigner } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
+
+import { UsePrepareContractWriteConfig, useSigner } from "wagmi";
 import { CANTO_FORWARDER_CONTRACT } from "../utils/contracts";
 
 export function useGlobalEntryPrepareContractWrite<
@@ -27,7 +29,7 @@ export function useGlobalEntryPrepareContractWrite<
   onSubmit?: () => void;
   onSuccess?: (result: TransactionReceipt) => void;
 }) {
-  const { address: signerAddress } = useAccount();
+  const { address: signerAddress } = useDelegatedAccount();
   const { data: signer } = useSigner();
 
   const globalEntrySigner = React.useMemo(() => {

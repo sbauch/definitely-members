@@ -2,7 +2,8 @@ import { TransactionReceipt } from "@ethersproject/providers";
 import { BigNumber, utils } from "ethers";
 import { keccak256, toUtf8Bytes } from "ethers/lib/utils.js";
 import { useMemo } from "react";
-import { useAccount, useWaitForTransaction } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
+import { useWaitForTransaction } from "wagmi";
 import { GOVERNANCE_CONTRACT, MEMBERSHIPS_CONTRACT } from "../utils/contracts";
 
 import { useGlobalEntryContractWrite } from "./useGlobalEntryContractWrite";
@@ -22,9 +23,9 @@ export function useCreateProposal({
   onTxError,
   description,
 }: Options) {
-  const { address } = useAccount();
+  const { address, vaultAddress } = useDelegatedAccount();
 
-  const { data: membership } = useMemberQuery(address || "0x");
+  const { data: membership } = useMemberQuery(vaultAddress || address || "0x");
 
   const proposalId = useMemo(() => {
     const abi = new utils.AbiCoder();
@@ -54,7 +55,7 @@ export function useCreateProposal({
     ],
     overrides: {
       customData: {
-        authorizer: address,
+        authorizer: vaultAddress || address,
         nftContract: MEMBERSHIPS_CONTRACT.address,
         nftTokenId: membership?.tokenId,
         nftChainId: process.env.NEXT_PUBLIC_CHAIN_ID,

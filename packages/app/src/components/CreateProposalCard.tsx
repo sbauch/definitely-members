@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useAccount } from "wagmi";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 import { useBlockExplorer } from "~hooks/useEtherscan";
 import { useIsDefMember } from "~hooks/useIsDefMember";
 import { useIsMounted } from "~hooks/useIsMounted";
@@ -27,7 +27,7 @@ export function CreateProposalCard() {
   const isMounted = useIsMounted();
   const router = useRouter();
 
-  const { address } = useAccount();
+  const { address } = useDelegatedAccount();
 
   const { isDefMember } = useIsDefMember({
     address,

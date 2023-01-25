@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { BigNumber } from "ethers";
 import { RequestDocument } from "graphql-request";
-import { useAccount } from "wagmi";
+import { useDelegatedAccount } from "~/hooks/useDelegatedAccount";
 import { graphql } from "../graphql";
 import { graphQlClient } from "../graphql/client";
 

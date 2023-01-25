@@ -1,6 +1,6 @@
 import { TransactionReceipt } from "@ethersproject/providers";
 import {
-  useAccount,
+  useDelegatedAccount,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
@@ -19,7 +19,7 @@ export function useClaimMembership({
   onTxSuccess,
   onTxError,
 }: Options) {
-  const { address } = useAccount();
+  const { address } = useDelegatedAccount();
   const { data: merkleProof } = useMerkleProof({
     address,
   });

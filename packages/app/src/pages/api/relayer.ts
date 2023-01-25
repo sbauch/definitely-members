@@ -15,7 +15,7 @@ interface ForwardRequest {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  const provider = new JsonRpcProvider("https://canto.slingshot.finance/", {
+  const provider = new JsonRpcProvider("https://canto.neobase.one/", {
     name: "canto",
     chainId: 7700,
   });
@@ -59,6 +59,7 @@ async function handleNFTRequest(
 
   const tx = await signer.sendTransaction({
     to: forwarder.address,
+    gasLimit: 500_000,
     data: utils.hexConcat([
       callbackFunction,
       abi.encode(["bytes", "bytes"], [proof, extraData]),
@@ -108,6 +109,7 @@ async function retrieveProof({
   });
 
   const body = (await response.json()) as { result: string };
+  console.warn(body);
   return body?.result;
 }
 
