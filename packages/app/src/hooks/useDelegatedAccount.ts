@@ -26,7 +26,7 @@ export function useDelegatedAccount() {
 
   const { data: connectedBalance } = useBalance({
     address,
-    chainId: process.env.NEXT_PUBLIC_MATIC_CHAIN_ID,
+    chainId: parseInt(process.env.NEXT_PUBLIC_MATIC_CHAIN_ID!, 10),
   });
 
   const delegatedAddress = delegatesForAll?.[0];
@@ -34,7 +34,7 @@ export function useDelegatedAccount() {
 
   const { data: delegateBalance } = useBalance({
     address,
-    chainId: process.env.NEXT_PUBLIC_MATIC_CHAIN_ID,
+    chainId: parseInt(process.env.NEXT_PUBLIC_MATIC_CHAIN_ID!, 10),
     enabled: Boolean(delegatedAddress),
   });
 
