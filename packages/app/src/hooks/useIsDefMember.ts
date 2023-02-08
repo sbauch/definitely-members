@@ -1,4 +1,5 @@
 import { useContractRead } from "wagmi";
+import { useDelegatedAccount } from "./useDelegatedAccount";
 import { MEMBERSHIPS_CONTRACT } from "../utils/contracts";
 
 type Options = {
@@ -8,11 +9,16 @@ type Options = {
 };
 
 export function useIsDefMember({ address, onSuccess, onSettled }: Options) {
+  const { address: connectedAddress, vaultAddress } = useDelegatedAccount();
+  const _address = (address === connectedAddress && vaultAddress) || address;
+  console.warn(_address);
+
   const { data, ...query } = useContractRead({
     ...MEMBERSHIPS_CONTRACT,
     functionName: "balanceOf",
-    args: [address || "0x"],
-    enabled: Boolean(address),
+    args: [_address || "0x"],
+    enabled: Boolean(_address),
+    chainId: 1,
     onSuccess: (data) => {
       if (onSuccess) {
         onSuccess(Boolean(data.gt(0)));

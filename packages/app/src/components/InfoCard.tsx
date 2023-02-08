@@ -36,6 +36,13 @@ export function InfoCard() {
             </Link>
           </Mono>
         </li>
+        <li>
+          <Mono>
+            <Link href="/proposals">
+              Proposals
+            </Link>
+          </Mono>
+        </li>
       </List>
     </Card>
   );

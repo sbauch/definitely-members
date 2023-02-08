@@ -13,6 +13,13 @@ const StyledCard = styled.article<{ isLoading: boolean }>`
     border-radius: 1rem;
   }
 
+  .subhead {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
   ${(p) =>
     p.isLoading &&
     css`
@@ -31,12 +38,20 @@ type Props = {
   children?: React.ReactNode;
   title?: string;
   isLoading?: boolean;
+  addendum?: React.ReactNode;
 };
 
-export function Card({ children, title, isLoading = false }: Props) {
+export function Card({ children, title, isLoading = false, addendum }: Props) {
   return (
     <StyledCard isLoading={isLoading}>
-      {!isLoading && <Subheading margin="0 0 0.25">{title}</Subheading>}
+      {!isLoading && (
+        <Subheading margin="0 0 0.25">
+          <div className="subhead">
+            <div>{title}</div>
+            {addendum}
+          </div>
+        </Subheading>
+      )}
       {isLoading && <LoadingIndicator />}
       {children}
     </StyledCard>

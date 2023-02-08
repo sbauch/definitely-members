@@ -1,11 +1,11 @@
 import { TransactionReceipt } from "@ethersproject/providers";
 import {
-  useAccount,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction,
 } from "wagmi";
 import { CLAIMABLE_CONTRACT } from "../utils/contracts";
+import { useDelegatedAccount } from "~hooks/useDelegatedAccount";
 import { useMerkleProof } from "./useMerkleProof";
 
 type Options = {
@@ -19,7 +19,7 @@ export function useClaimMembership({
   onTxSuccess,
   onTxError,
 }: Options) {
-  const { address } = useAccount();
+  const { address } = useDelegatedAccount();
   const { data: merkleProof } = useMerkleProof({
     address,
   });
